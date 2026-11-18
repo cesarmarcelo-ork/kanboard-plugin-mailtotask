@@ -1,0 +1,23 @@
+<?php
+namespace Kanboard\Plugin\MailToTask;
+
+use Kanboard\Core\Plugin\Base;
+use Kanboard\Core\Security\Role;
+
+class Plugin extends Base
+{
+    public function initialize()
+    {
+        $this->projectAccessMap->add('MailController', '*', Role::PROJECT_MEMBER);
+        $this->template->hook->attach('template:project:dropdown', 'MailToTask:project/dropdown');
+        $this->route->addRoute('/project/:project_id/mail-to-task', 'MailController', 'show', 'MailToTask');
+        $this->route->addRoute('/project/:project_id/mail-to-task/preview', 'MailController', 'preview', 'MailToTask');
+        $this->route->addRoute('/project/:project_id/mail-to-task/create', 'MailController', 'create', 'MailToTask');
+    }
+    public function getPluginName() { return 'MailToTask'; }
+    public function getPluginDescription() { return 'Importação manual de e-mails do Outlook/Exchange para cartões com Objetivo e StatusReport.'; }
+    public function getPluginAuthor() { return 'OrkFlowTech'; }
+    public function getPluginVersion() { return '0.2.0-dev'; }
+    public function getPluginHomepage() { return 'https://github.com/cesarmarcelo-ork/kanboard-plugin-mailtotask'; }
+    public function getCompatibleVersion() { return '>=1.2.50'; }
+}
