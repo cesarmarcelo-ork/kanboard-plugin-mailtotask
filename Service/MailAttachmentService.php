@@ -89,10 +89,15 @@ class MailAttachmentService
         $saved = array();
         foreach (array_merge(array($original), $extracted) as $file) {
             try {
-                $result = $taskFileModel->uploadFile($taskId, $file);
-                // Kanboard v1.2.57 uploadFile returns void; check metadata afterwards.
+                $before = count($taskFileModel->getAll($taskId));
+                // Kanboard v1.2.57 uploadFile() returns void, so check persisted metadata.
+                $taskFileModel->uploadFile($taskId, $file);
+                $after = count($taskFileModel->getAll($taskId));
+                if ($after !== $before + 1) {
+                    throw new \\RuntimeException('O arquivo não apareceu no cadastro de anexos do Kanboard.');
+                }
                 $saved[] = $file['name'];
-            } catch (\Exception $e) {
+            } catch (\\Exception $e) {
                 $errors[] = $file['name'].': '.$e->getMessage();
             }
         }
