@@ -28,7 +28,7 @@ class MailController extends BaseController
             'project'=>$this->projectModel->getById($projectId),
             'error'=>$error,
             'statusreport'=>$this->supportsStatusReport(),
-            'default_status'=>self::DEFAULT_STATUS,
+             'default_status'=>t('MailToTask initial status'),
         )));
     }
 
@@ -45,10 +45,10 @@ class MailController extends BaseController
         $status = trim((string)(isset($posted['status']) ? $posted['status'] : ''));
 
         if ($title === '' || mb_strlen($title) > 255 || $objective === '' || mb_strlen($objective) > 20000) {
-            return $this->render($projectId, 'Informe um título e um Objetivo válidos.');
+            return $this->render($projectId, t('MailToTask title objective required'));
         }
         if ($register && (!$this->supportsStatusReport() || $status === '')) {
-            return $this->render($projectId, 'StatusReport indisponível ou Situação Atual vazia.');
+            return $this->render($projectId, t('MailToTask status unavailable'));
         }
         $service = new MailAttachmentService();
         try {
@@ -70,7 +70,7 @@ class MailController extends BaseController
             'creator_id'=>(int)$this->userSession->getId(),
         ));
         if (!$taskId) {
-            return $this->render($projectId, 'O Kanboard não conseguiu criar o cartão.');
+            return $this->render($projectId, t('MailToTask card creation failed'));
         }
 
         $upload = $service->store($this->taskFileModel, $taskId, $original, $attachments);
@@ -90,15 +90,15 @@ class MailController extends BaseController
                 $this->container['statusReportMirrorModel']->sync($taskId);
             } catch (\Exception $e) {
                 $this->logger->error('MailToTask: cartao #'.$taskId.' - StatusReport: '.$e->getMessage());
-                $warnings[] = 'Não foi possível registrar o Informe de Situação.';
+                $warnings[] = t('MailToTask status registration failed');
             }
         }
 
         if ($warnings) {
             $this->logger->error('MailToTask: cartao #'.$taskId.' - upload incompleto: '.implode(' | ', $warnings));
-            $this->flash->failure('Cartão #'.$taskId.' criado com falhas em anexos ou StatusReport. Confira os arquivos do cartão.');
+            $this->flash->failure(t('MailToTask partial', $taskId));
         } else {
-            $this->flash->success('Cartão #'.$taskId.' criado. Mensagem original e '.count($attachments).' anexo(s) enviados para o Kanboard.');
+            $this->flash->success(t('MailToTask success', $taskId, count($attachments)));
         }
         return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('task_id'=>$taskId)));
     }
