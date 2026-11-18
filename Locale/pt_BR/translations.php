@@ -21,4 +21,11 @@ return array(
     'MailToTask storage notice'=>'Mensagem original e anexos serão armazenados no Kanboard, sem compactação ou modificação.',
     'MailToTask create'=>'Criar cartão e incorporar arquivos',
     'MailToTask lab warning'=>'Versão experimental. Use apenas e-mails fictícios até concluir os testes funcionais de anexos.',
+    'MailToTask initial status'=>'Documentação recebida por e-mail e aguardando análise inicial.',
+    'MailToTask title objective required'=>'Informe um título e um Objetivo válidos.',
+    'MailToTask status unavailable'=>'StatusReport indisponível ou Situação Atual vazia.',
+    'MailToTask card creation failed'=>'O Kanboard não conseguiu criar o cartão.',
+    'MailToTask status registration failed'=>'Não foi possível registrar o Informe de Situação.',
+    'MailToTask partial'=>'Cartão #%d criado com falhas em anexos ou StatusReport. Confira os arquivos do cartão.',
+    'MailToTask success'=>'Cartão #%d criado. Mensagem original e %d anexo(s) enviados para o Kanboard.',
 );
