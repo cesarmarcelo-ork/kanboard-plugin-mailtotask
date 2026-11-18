@@ -21,4 +21,11 @@ return array(
     'MailToTask storage notice'=>'Original message and attachments will be stored in Kanboard without compression or modification.',
     'MailToTask create'=>'Create task and attach files',
     'MailToTask lab warning'=>'Experimental version. Use test emails only until attachment functionality has been validated.',
+    'MailToTask initial status'=>'Documentation received by email and awaiting initial review.',
+    'MailToTask title objective required'=>'Enter a valid title and Objective.',
+    'MailToTask status unavailable'=>'StatusReport unavailable or Current status is empty.',
+    'MailToTask card creation failed'=>'Kanboard could not create the task.',
+    'MailToTask status registration failed'=>'Unable to create the initial status report.',
+    'MailToTask partial'=>'Task #%d created with attachment or StatusReport errors. Review the task files.',
+    'MailToTask success'=>'Task #%d created. Original message and %d attachment(s) sent to Kanboard.',
 );
