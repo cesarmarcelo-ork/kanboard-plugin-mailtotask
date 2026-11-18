@@ -94,10 +94,10 @@ class MailAttachmentService
                 $taskFileModel->uploadFile($taskId, $file);
                 $after = count($taskFileModel->getAll($taskId));
                 if ($after !== $before + 1) {
-                    throw new \\RuntimeException('O arquivo não apareceu no cadastro de anexos do Kanboard.');
+                    throw new \RuntimeException('O arquivo não apareceu no cadastro de anexos do Kanboard.');
                 }
                 $saved[] = $file['name'];
-            } catch (\\Exception $e) {
+            } catch (\Exception $e) {
                 $errors[] = $file['name'].': '.$e->getMessage();
             }
         }
