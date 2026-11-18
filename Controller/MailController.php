@@ -22,7 +22,7 @@ class MailController extends BaseController
     }
     private function render($projectId, $stage, array $values = array(), $error = '')
     {
-        $this->response->html($this->template->render('MailToTask:mail/import', array(
+        $this->response->html($this->helper->layout->app('MailToTask:mail/import', array(
             'project'=>$this->projectModel->getById($projectId),
             'stage'=>$stage, 'values'=>$values, 'error'=>$error,
             'statusreport'=>$this->supportsStatusReport(),
