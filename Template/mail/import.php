@@ -4,7 +4,7 @@
     <div>
       <h2 class="mt-heading"><?= t('MailToTask title') ?></h2>
       <p class="mt-subtitle"><?= $this->text->e($project['name']) ?> • Microsoft Outlook / Exchange</p>
-      <p class="mt-back"><?= $this->url->link('<?= t('MailToTask back') ?>', 'BoardViewController', 'show', array('project_id'=>$pid)) ?></p>
+      <p class="mt-back"><?= $this->url->link(t('MailToTask back'), 'BoardViewController', 'show', array('project_id'=>$pid)) ?></p>
     </div>
   </div>
   <?php if ($error): ?><div class="mt-error" role="alert"><?= $this->text->e($error) ?></div><?php endif ?>
