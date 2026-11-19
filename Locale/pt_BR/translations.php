@@ -1,7 +1,7 @@
 <?php
 return array(
     'MailToTask menu'=>'e-mail',
-    'MailToTask title'=>'E-mail para cartão',
+    'MailToTask title'=>'e-mail para cartão',
     'MailToTask back'=>'Voltar ao quadro',
     'MailToTask step import'=>'1. Incorporar uma mensagem do Outlook',
     'MailToTask import hint'=>'Arraste um arquivo .msg ou .eml salvo no computador. A mensagem original e os anexos serão preservados no cartão.',
@@ -20,7 +20,6 @@ return array(
     'MailToTask no status'=>'StatusReport não detectado. O cartão será criado sem Informe de Situação.',
     'MailToTask storage notice'=>'Mensagem original e anexos serão armazenados no Kanboard, sem compactação ou modificação.',
     'MailToTask create'=>'Criar cartão e incorporar arquivos',
-    'MailToTask lab warning'=>'Versão experimental. Use apenas e-mails fictícios até concluir os testes funcionais de anexos.',
     'MailToTask initial status'=>'Documentação recebida por e-mail e aguardando análise inicial.',
     'MailToTask title objective required'=>'Informe um título e um Objetivo válidos.',
     'MailToTask status unavailable'=>'StatusReport indisponível ou Situação Atual vazia.',
