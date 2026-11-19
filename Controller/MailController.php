@@ -66,7 +66,7 @@ class MailController extends BaseController
         $taskId = $this->taskCreationModel->create(array(
             'project_id'=>$projectId,
             'title'=>$title,
-            'description'=>"## Objetivo\n\n".$objective,
+            'description'=>"**Objetivo**\n\n".$objective,
             'creator_id'=>(int)$this->userSession->getId(),
         ));
         if (!$taskId) {
