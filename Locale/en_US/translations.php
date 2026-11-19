@@ -20,7 +20,6 @@ return array(
     'MailToTask no status'=>'StatusReport not detected. The task will be created without an initial status report.',
     'MailToTask storage notice'=>'Original message and attachments will be stored in Kanboard without compression or modification.',
     'MailToTask create'=>'Create task and attach files',
-    'MailToTask lab warning'=>'Experimental version. Use test emails only until attachment functionality has been validated.',
     'MailToTask initial status'=>'Documentation received by email and awaiting initial review.',
     'MailToTask title objective required'=>'Enter a valid title and Objective.',
     'MailToTask status unavailable'=>'StatusReport unavailable or Current status is empty.',
