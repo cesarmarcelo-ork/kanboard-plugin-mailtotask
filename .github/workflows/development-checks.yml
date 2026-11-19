@@ -30,7 +30,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          VERSION=$(php -r "require 'Plugin.php'; echo '0.4.0-rc2';")
+          VERSION=$(grep 'function getPluginVersion' Plugin.php | cut -d "'" -f2)
           mkdir -p dist/MailToTask
           cp -R Asset Controller Locale Service Template Test Plugin.php README.md .gitignore dist/MailToTask/
           cd dist
