@@ -57,7 +57,7 @@
       browser: 'Browser could not prepare file attachments.'
     }
   };
-  const locale = (document.documentElement.lang || 'pt').toLowerCase().startsWith('en') ? 'en' : 'pt';
+  const locale = (document.querySelector('[data-mailtotask]')?.getAttribute('data-mt-locale') || document.documentElement.lang || 'en_US').toLowerCase().startsWith('pt') ? 'pt' : 'en';
   const tr = key => messages[locale][key] || messages.pt[key] || key;
   const MAX_BYTES = 20 * 1024 * 1024;
   const MAX_FILES = 40;
@@ -126,10 +126,10 @@
     function display(m, file, attachments) {
       root.querySelector('#mt-title').value = plain(m.assunto) || tr('fallback');
       const from = m.de ? (plain(m.de.nome) + ' <' + plain(m.de.email) + '>') : '';
-      const date = m.data instanceof Date && !Number.isNaN(m.data.getTime()) ? m.data.toLocaleString('pt-BR') : '';
+      const date = m.data instanceof Date && !Number.isNaN(m.data.getTime()) ? m.data.toLocaleString(locale === 'pt' ? 'pt-BR' : 'en-US') : '';
       const line = [
         [tr('sender'), from], [tr('date'), date], ['Message-ID', m.messageId || tr('missing')],
-        ['Original', file.name + ' (' + readable(file.size) + ')'],
+        [tr('original'), file.name + ' (' + readable(file.size) + ')'],
       ];
       meta.replaceChildren();
       for (const pair of line) {
@@ -147,7 +147,7 @@
       names.appendChild(label);
       const ul = document.createElement('ul');
       const originalLi = document.createElement('li');
-      originalLi.textContent = 'Mensagem original: ' + file.name;
+      originalLi.textContent = tr('original') + ': ' + file.name;
       ul.appendChild(originalLi);
       attachments.forEach(a => {
         const li = document.createElement('li');
@@ -179,7 +179,7 @@
         const relevant = (msg.anexos || []).filter(a => !a.embutido);
         if (relevant.length > MAX_FILES) throw new Error(tr('many'));
         for (const item of relevant) {
-          if (!item.dados) throw new Error(tr('missingBytes') + cleanName(item.nome) + ' não possui conteúdo recuperável.');
+          if (!item.dados) throw new Error(tr('missingBytes') + cleanName(item.nome));
           const attachment = toFile(item);
           if (!attachment) throw new Error(tr('decode') + cleanName(item.nome));
           sum += attachment.size;
