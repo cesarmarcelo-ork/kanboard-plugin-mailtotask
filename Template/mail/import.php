@@ -1,5 +1,5 @@
 <?php $pid = (int)$project['id']; ?>
-<div class="mt-page" data-mailtotask>
+<div class="mt-page" data-mailtotask data-mt-locale="<?= $this->text->e($locale) ?>">
   <div class="mt-header">
     <div>
       <h2 class="mt-heading"><?= t('MailToTask title') ?></h2>
@@ -59,5 +59,4 @@
     <input id="mt-extracted-upload" type="file" name="attachments[]" multiple class="mt-hidden" tabindex="-1" aria-hidden="true">
     <input id="mt-attachments-expected" type="hidden" name="attachments_expected" value="0">
   </form>
-  <p class="mt-alert"><?= t('MailToTask lab warning') ?></p>
 </div>
