@@ -26,6 +26,7 @@ class MailController extends BaseController
     {
         $this->response->html($this->helper->layout->app('MailToTask:mail/import', array(
             'project'=>$this->projectModel->getById($projectId),
+            'locale'=>$this->languageModel->getCurrentLanguage(),
             'error'=>$error,
             'statusreport'=>$this->supportsStatusReport(),
              'default_status'=>t('MailToTask initial status'),
