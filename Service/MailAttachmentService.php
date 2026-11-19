@@ -10,30 +10,30 @@ class MailAttachmentService
     public function validateOriginal($file)
     {
         if (!is_array($file) || !isset($file['error']) || (int)$file['error'] !== UPLOAD_ERR_OK) {
-            throw new \InvalidArgumentException('Envio da mensagem original falhou (verifique os limites do servidor).');
+            throw new \InvalidArgumentException(t('MailToTask err original upload'));
         }
         $size = isset($file['size']) ? (int)$file['size'] : 0;
         if ($size <= 0 || $size > self::MAX_MAIL_BYTES) {
-            throw new \InvalidArgumentException('Mensagem original deve ter no máximo 20 MiB.');
+            throw new \InvalidArgumentException(t('MailToTask err original size'));
         }
         $name = isset($file['name']) ? (string)$file['name'] : '';
         $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
         if (!in_array($ext, array('msg', 'eml'), true)) {
-            throw new \InvalidArgumentException('Formato de mensagem inválido (.msg/.eml).');
+            throw new \InvalidArgumentException(t('MailToTask err original type'));
         }
         $path = isset($file['tmp_name']) ? (string)$file['tmp_name'] : '';
         if (!is_uploaded_file($path)) {
-            throw new \InvalidArgumentException('Arquivo temporário de mensagem inválido.');
+            throw new \InvalidArgumentException(t('MailToTask err original tmp'));
         }
         $handle = fopen($path, 'rb');
-        if (!$handle) throw new \InvalidArgumentException('Mensagem original ilegível.');
+        if (!$handle) throw new \InvalidArgumentException(t('MailToTask err original unreadable'));
         $head = fread($handle, 4096);
         fclose($handle);
         if ($ext === 'msg' && substr($head, 0, 8) !== "\xD0\xCF\x11\xE0\xA1\xB1\x1A\xE1") {
-            throw new \InvalidArgumentException('Arquivo .msg com assinatura inválida.');
+            throw new \InvalidArgumentException(t('MailToTask err msg signature'));
         }
         if ($ext === 'eml' && !preg_match('/^(from|date|subject|to|mime-version|received|message-id|return-path):/mi', $head)) {
-            throw new \InvalidArgumentException('Arquivo .eml sem cabeçalhos reconhecidos.');
+            throw new \InvalidArgumentException(t('MailToTask err eml headers'));
         }
         return $this->sanitizeName($name);
     }
@@ -42,10 +42,10 @@ class MailAttachmentService
     {
         $expected = (int)$expected;
         if ($expected < 0 || $expected > self::MAX_EXTRACTED_FILES) {
-            throw new \InvalidArgumentException('Número de anexos inválido.');
+            throw new \InvalidArgumentException(t('MailToTask err attachment count'));
         }
         if (!$files || !isset($files['name']) || !is_array($files['name'])) {
-            if ($expected !== 0) throw new \InvalidArgumentException('Os anexos extraídos não chegaram ao servidor.');
+            if ($expected !== 0) throw new \InvalidArgumentException(t('MailToTask err missing attachments'));
             return array();
         }
         $out = array();
@@ -53,21 +53,21 @@ class MailAttachmentService
         foreach ($files['name'] as $index => $name) {
             $error = isset($files['error'][$index]) ? (int)$files['error'][$index] : UPLOAD_ERR_NO_FILE;
             if ($error === UPLOAD_ERR_NO_FILE) continue;
-            if ($error !== UPLOAD_ERR_OK) throw new \InvalidArgumentException('Falha no envio de um anexo (código '.$error.').');
+            if ($error !== UPLOAD_ERR_OK) throw new \InvalidArgumentException(t('MailToTask err attachment upload code', $error));
             $size = isset($files['size'][$index]) ? (int)$files['size'][$index] : 0;
             if ($size <= 0 || $size > self::MAX_EXTRACTED_BYTES) {
-                throw new \InvalidArgumentException('Anexo vazio ou acima de 20 MiB.');
+                throw new \InvalidArgumentException(t('MailToTask err attachment size'));
             }
             $total += $size;
             if ($total > self::MAX_EXTRACTED_BYTES) {
-                throw new \InvalidArgumentException('A soma dos anexos extraídos ultrapassou 20 MiB.');
+                throw new \InvalidArgumentException(t('MailToTask err attachment total'));
             }
             $path = isset($files['tmp_name'][$index]) ? $files['tmp_name'][$index] : '';
-            if (!is_uploaded_file($path)) throw new \InvalidArgumentException('Arquivo temporário de anexo inválido.');
+            if (!is_uploaded_file($path)) throw new \InvalidArgumentException(t('MailToTask err attachment tmp'));
             $out[] = array('name'=>$this->sanitizeName($name), 'size'=>$size, 'error'=>UPLOAD_ERR_OK, 'tmp_name'=>$path);
         }
         if (count($out) > self::MAX_EXTRACTED_FILES || count($out) !== $expected) {
-            throw new \InvalidArgumentException('Quantidade de anexos recebidos difere da esperada.');
+            throw new \InvalidArgumentException(t('MailToTask err attachment mismatch'));
         }
         return $out;
     }
@@ -94,7 +94,7 @@ class MailAttachmentService
                 $taskFileModel->uploadFile($taskId, $file);
                 $after = count($taskFileModel->getAll($taskId));
                 if ($after !== $before + 1) {
-                    throw new \RuntimeException('O arquivo não apareceu no cadastro de anexos do Kanboard.');
+                    throw new \RuntimeException(t('MailToTask err missing record'));
                 }
                 $saved[] = $file['name'];
             } catch (\Exception $e) {
