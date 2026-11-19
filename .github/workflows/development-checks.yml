@@ -20,7 +20,25 @@ jobs:
           find . -type f -name '*.php' -print0 | xargs -0 -n1 php -l
       - name: Parser smoke test
         run: php Test/parser-smoke.php
+      - name: Portuguese and English translations
+        run: php Test/locale-smoke.php
       - name: JavaScript syntax check
         run: |
           set -eu
           find Asset/js -type f -name '*.js' -print0 | xargs -0 -n1 node --check
+      - name: Package plugin with correct Kanboard folder
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION=$(php -r "require 'Plugin.php'; echo '0.4.0-rc2';")
+          mkdir -p dist/MailToTask
+          cp -R Asset Controller Locale Service Template Test Plugin.php README.md .gitignore dist/MailToTask/
+          cd dist
+          zip -qr "../MailToTask-${VERSION}.zip" MailToTask
+          unzip -t "../MailToTask-${VERSION}.zip" | tail -1
+      - name: Save installable package
+        uses: actions/upload-artifact@v4
+        with:
+          name: MailToTask-plugin-rc
+          path: MailToTask-*.zip
+          if-no-files-found: error
