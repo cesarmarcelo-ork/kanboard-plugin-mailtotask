@@ -10,8 +10,8 @@ Source: https://github.com/kanboard/website#how-to-add-a-new-plugin-to-the-list
 - [x] ZIP build instructions and GitHub Actions packaging setup
 - [ ] Green, recent CI execution including the locale and archive checks (latest Actions runs have failed)
 - [ ] Functional attachment and StatusReport tests on the Kanboard homelab
-- [ ] Authorize a public redistribution license for the plugin and the OrkFlowTech-derived email parser files
-- [ ] Change this GitHub repository from private to **public** (requires repository administration)
+- [x] Authorize a public redistribution license (MIT) for the plugin and OrkFlowTech-derived email parser copies; original extension remains proprietary
+- [x] GitHub repository is **public** (verified)
 - [ ] Merge reviewed source to default branch and publish a versioned GitHub Release with `MailToTask/` at archive root
 - [ ] Submit a PR to `kanboard/website` changing `plugins.json`
 
@@ -27,14 +27,14 @@ These values reflect the expected schema, but must not be submitted until the re
     "author": "OrkFlowTech",
     "compatible_version": ">=1.2.50",
     "description": "Create Kanboard tasks from Outlook/Exchange .msg and .eml messages, preserving the original message and extracted attachments, with optional StatusReport integration and English/Portuguese interface.",
-    "download": "REPLACE_WITH_PUBLIC_GITHUB_RELEASE_ZIP_URL",
+    "download": "REPLACE_WITH_VERSIONED_PUBLIC_GITHUB_RELEASE_ZIP_URL",
     "has_hooks": true,
     "has_overrides": false,
     "has_schema": false,
     "homepage": "https://github.com/cesarmarcelo-ork/kanboard-plugin-mailtotask",
     "is_type": "plugin",
     "last_updated": "2026-11-19",
-    "license": "REPLACE_WITH_AUTHORIZED_LICENSE",
+    "license": "MIT",
     "readme": "https://github.com/cesarmarcelo-ork/kanboard-plugin-mailtotask/blob/main/README.md",
     "remote_install": true,
     "title": "MailToTask",
