@@ -4,7 +4,7 @@ Kanboard plugin that turns **Microsoft Outlook/Exchange** messages (`.msg`, `.em
 
 Plugin do Kanboard para converter mensagens **Microsoft Outlook/Exchange** (`.msg`, `.eml`) em cartões, com Objetivo elaborado pelo usuário e anexos nativos.
 
-**Release candidate:** `0.4.0-rc2` • **Compatibility declared:** Kanboard `>=1.2.50` • **Status:** functional acceptance tests and distribution licensing pending.
+**Release candidate:** `0.4.0-rc2` • **Compatibility declared:** Kanboard `>=1.2.50` • **License:** MIT • **Status:** functional acceptance tests and release review pending.
 
 ## Português (pt_BR)
 
@@ -73,11 +73,12 @@ Executar testes com mensagens fictícias .msg/.eml, com e sem anexos, limites de
 
 Create a distribution ZIP with `MailToTask/` as its root folder, then extract it to `plugins/MailToTask/`. Declared compatibility is Kanboard >=1.2.50; functional acceptance testing remains required. Check PHP, Nginx and proxy limits (see configuration above). Both `pt_BR` and `en_US` UI translations are included.
 
-## Maintainers and distribution
+## Maintainers and distribution / Licença e distribuição
 
-- Copyright: OrkFlowTech / respective copyright holders.
-- **Public redistribution and license terms must be resolved before publishing.** The browser message readers were adapted from another OrkFlowTech project that carries a proprietary license notice. No MIT license is implied by this README.
-- The official Kanboard catalog requires a **public, versioned ZIP release** and a pull request to `kanboard/website`, changing `plugins.json`. This repository is still private until the owner changes its visibility.
-- For CI see `.github/workflows/development-checks.yml`; the workflow packages the correct ZIP and verifies PHP syntax, JS syntax, parser smoke test and locale coverage.
+- **License / Licença:** [MIT License](LICENSE), Copyright (c) 2026 OrkFlowTech.
+- The owner of K-OrkFlowTech authorized licensing the copied email readers under MIT **in MailToTask**. The original browser extension **remains proprietary**. See [RELICENSING-RECORD](docs/RELICENSING-RECORD.md) and [THIRD-PARTY-NOTICES](THIRD-PARTY-NOTICES.md).
+- O titular da K-OrkFlowTech autorizou o uso dos leitores de e-mail sob MIT **nas cópias do MailToTask**. A extensão original **permanece proprietária**.
+- A distribuição pública requer release versionado com arquivo ZIP contendo a pasta `MailToTask/` na raiz, homologação funcional e solicitação de inclusão no `kanboard/website` (`plugins.json`).
+- Functional tests and CI still need verification before declaring v1.0.0 production-ready.
 
-References: [Kanboard plugin directory](https://kanboard.org/plugins.html), [directory submission guide](https://github.com/kanboard/website), [StatusReport](https://github.com/cesarmarcelo-ork/kanboard-plugin-statusreport).
+References: [Kanboard plugins](https://kanboard.org/plugins.html), [Kanboard website repository](https://github.com/kanboard/website), [StatusReport](https://github.com/cesarmarcelo-ork/kanboard-plugin-statusreport).
