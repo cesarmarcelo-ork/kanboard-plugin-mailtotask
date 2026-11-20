@@ -1,0 +1,57 @@
+name: Publish MailToTask Release
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Plugin.php'
+      - 'Asset/**'
+      - 'Controller/**'
+      - 'Service/**'
+      - 'Template/**'
+      - 'Locale/**'
+      - 'LICENSE'
+      - 'THIRD-PARTY-NOTICES.md'
+      - 'scripts/build-release.sh'
+      - '.github/workflows/release.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - name: Validate PHP
+        run: find . -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: Test parsers and translations
+        run: |
+          php Test/parser-smoke.php
+          php Test/locale-smoke.php
+      - name: Validate JavaScript
+        run: find Asset/js -type f -name '*.js' -print0 | xargs -0 -n1 node --check
+      - name: Package release
+        run: |
+          set -euo pipefail
+          bash scripts/build-release.sh
+          VERSION=$(grep 'function getPluginVersion' Plugin.php | cut -d "'" -f2)
+          test -f "dist/MailToTask-${VERSION}.zip"
+          unzip -l "dist/MailToTask-${VERSION}.zip" | grep -q "MailToTask/Plugin.php"
+          unzip -l "dist/MailToTask-${VERSION}.zip" | grep -q "MailToTask/LICENSE"
+      - name: Publish versioned GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          VERSION=$(grep 'function getPluginVersion' Plugin.php | cut -d "'" -f2)
+          TAG="v${VERSION}"
+          ZIP="dist/MailToTask-${VERSION}.zip"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists; replacing matching distribution asset."
+            gh release upload "$TAG" "$ZIP" --clobber
+          else
+            gh release create "$TAG" "$ZIP" --target "$GITHUB_SHA" --title "MailToTask ${VERSION}" --notes-file RELEASE_NOTES.md --latest
+          fi

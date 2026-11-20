@@ -1,0 +1,44 @@
+name: Development checks
+on:
+  push:
+    branches: [main, develop, 'feature/attachments-20mb']
+  pull_request:
+    branches: [main, develop]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: none
+      - name: PHP syntax lint
+        run: |
+          set -eu
+          find . -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: Parser smoke test
+        run: php Test/parser-smoke.php
+      - name: Portuguese and English translations
+        run: php Test/locale-smoke.php
+      - name: JavaScript syntax check
+        run: |
+          set -eu
+          find Asset/js -type f -name '*.js' -print0 | xargs -0 -n1 node --check
+      - name: Package plugin with correct Kanboard folder
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION=$(grep 'function getPluginVersion' Plugin.php | cut -d "'" -f2)
+          mkdir -p dist/MailToTask
+          cp -R Asset Controller Locale Service Template Test Plugin.php README.md LICENSE THIRD-PARTY-NOTICES.md dist/MailToTask/
+          cd dist
+          zip -qr "../MailToTask-${VERSION}.zip" MailToTask
+          unzip -t "../MailToTask-${VERSION}.zip" | tail -1
+      - name: Save installable package
+        uses: actions/upload-artifact@v4
+        with:
+          name: MailToTask-plugin-package
+          path: MailToTask-*.zip
+          if-no-files-found: error

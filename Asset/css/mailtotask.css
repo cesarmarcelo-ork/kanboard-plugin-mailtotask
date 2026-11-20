@@ -1,0 +1,29 @@
+/* MailToTask UI: isolated from the rest of Kanboard. */
+.mt-page{max-width:1100px;margin:0 auto;padding:16px 12px 32px}
+.mt-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.mt-back{font-size:13px}
+.mt-heading{margin:0;font-size:23px;font-weight:650}
+.mt-subtitle{margin:4px 0;color:#667085}
+.mt-card{border:1px solid #d7dce2;border-radius:10px;background:var(--color-white,#fff);padding:20px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.mt-card h3{margin:0 0 12px;font-size:16px}
+.mt-drop{border:2px dashed #98a8bb;border-radius:10px;padding:28px 18px;text-align:center;cursor:pointer;background:#f6f9fc;transition:background .15s,border-color .15s}
+.mt-drop.mt-over{border-color:#2563eb;background:#eaf3ff}
+.mt-drop strong{display:block;font-size:17px;margin:5px 0}
+.mt-drop small{color:#576579;display:block}
+.mt-file{display:block;margin:12px auto;max-width:100%}
+.mt-field{margin:16px 0}
+.mt-field label{display:block;margin-bottom:7px;font-weight:650}
+.mt-field input[type=text],.mt-field textarea{display:block;box-sizing:border-box;width:100%;max-width:100%;padding:10px 12px;border:1px solid #aeb9c5;border-radius:6px;font:inherit;line-height:1.5}
+.mt-field textarea{min-height:100px}
+.mt-error{padding:12px 14px;border:1px solid #f6b6b6;background:#fff1f1;color:#812222;border-radius:7px}
+.mt-alert{padding:12px 14px;border:1px solid #f0d99a;background:#fffbeb;color:#6c4c15;border-radius:7px}
+.mt-ok{padding:10px 12px;color:#1d5d37;background:#eaf9ee;border-radius:6px}
+.mt-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px}
+.mt-actions button{padding:9px 18px}
+.mt-origin{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:12px 0}
+.mt-origin div{background:#f6f8fb;border-radius:6px;padding:12px;overflow-wrap:anywhere}
+.mt-origin b{display:block;margin-bottom:4px}
+.mt-message{white-space:pre-wrap;overflow-wrap:anywhere;max-height:310px;overflow:auto;background:#f8fafc;padding:14px;border:1px solid #e0e5eb;border-radius:6px}
+.mt-note{font-size:13px;color:#667085}
+.mt-hidden{display:none}
+@media(max-width:650px){.mt-card{padding:14px}.mt-header{display:block}.mt-drop{padding:19px 12px}}
