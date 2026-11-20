@@ -8,8 +8,8 @@ Source: https://github.com/kanboard/website#how-to-add-a-new-plugin-to-the-list
 - [x] Remove experimental banner from the form
 - [x] Static audit: 42 keys in pt_BR and en_US, no missing referenced keys
 - [x] ZIP build instructions and GitHub Actions packaging setup
-- [ ] Green, recent CI execution including the locale and archive checks (latest Actions runs have failed)
-- [ ] Functional attachment and StatusReport tests on the Kanboard homelab
+- [x] Green CI execution including locale and archive checks on the release branch; recheck after merge
+- [x] Functional attachment and StatusReport tests on the Kanboard homelab (reported complete by plugin owner)
 - [x] Authorize a public redistribution license (MIT) for the plugin and OrkFlowTech-derived email parser copies; original extension remains proprietary
 - [x] GitHub repository is **public** (verified)
 - [ ] Merge reviewed source to default branch and publish a versioned GitHub Release with `MailToTask/` at archive root
@@ -38,7 +38,7 @@ These values reflect the expected schema, but must not be submitted until the re
     "readme": "https://github.com/cesarmarcelo-ork/kanboard-plugin-mailtotask/blob/main/README.md",
     "remote_install": true,
     "title": "MailToTask",
-    "version": "0.4.0-rc2"
+    "version": "1.0.0"
   }
 }
 ```
@@ -49,7 +49,7 @@ Version and date should be updated to the actual public release. A GitHub branch
 
 ```bash
 bash scripts/build-release.sh
-unzip -l dist/MailToTask-0.4.0-rc2.zip | head
+unzip -l dist/MailToTask-1.0.0.zip | head
 ```
 
 The archive should start with `MailToTask/Plugin.php`, not with `kanboard-plugin-mailtotask-feature-attachments-20mb/`.
