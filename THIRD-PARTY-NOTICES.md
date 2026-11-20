@@ -1,27 +1,28 @@
-# Proveniência e avisos de componentes
+# Proveniência, licença e avisos de componentes
 
-## Componentes originários de K-OrkFlowTech
+## Licença do MailToTask
 
-O MailToTask inclui cópias dos seguintes arquivos de projeto mantido pela OrkFlowTech:
+O MailToTask é disponibilizado sob a **MIT License**, conforme o arquivo [LICENSE](LICENSE), com copyright (c) 2026 OrkFlowTech.
 
-| MailToTask | Origem |
+O proprietário da K-OrkFlowTech confirmou a titularidade e autorizou o licenciamento MIT do projeto MailToTask e das cópias dos leitores de e-mail nele incorporadas. Os avisos específicos dos arquivos foram atualizados.
+
+## Componentes originários da extensão K-OrkFlowTech
+
+| Arquivo do MailToTask | Arquivo da extensão original |
 | --- | --- |
 | `Asset/js/mail-core.js` | `orkflowtech-extension/src/core/mail-core.js` |
 | `Asset/js/mail-msg.js` | `orkflowtech-extension/src/core/mail-msg.js` |
 
-No projeto de origem esses componentes estão identificados como **software proprietário da OrkFlowTech**, sujeito ao arquivo `src/LICENSE`. A licença de origem impede redistribuição e obras derivadas sem autorização escrita da titular.
+Estes dois componentes foram desenvolvidos no contexto da extensão K-OrkFlowTech e são **licenciados sob MIT nas cópias incluídas no MailToTask**, por autorização de seu titular.
 
-A proposta é que o titular autorize **licenciamento MIT específico das cópias incluídas no MailToTask**, preservando o projeto de origem sob sua licença atual. Até a formalização dessa autorização, não se deve afirmar que o conjunto inteiro já está sob MIT.
+**A extensão K-OrkFlowTech original não foi relicenciada.** O repositório `orkflowtech-extension`, incluindo seus arquivos originais, permanece regido por sua própria licença proprietária `src/LICENSE`.
+
+O registro da decisão e do escopo pode ser consultado em `docs/RELICENSING-RECORD.md`.
 
 ## Componentes de terceiros
 
-A extensão K-OrkFlowTech declara JSZip 3.10.1 como dependência embarcada. **JSZip não está incluído no MailToTask** conforme a árvore de arquivos revisada para a versão candidata. Caso sejam adicionadas dependências no futuro, seus avisos de licença devem ser aqui registrados.
+A extensão original possui avisos para JSZip 3.10.1. O plugin MailToTask atualmente não incorpora JSZip nos seus arquivos de distribuição. Caso dependências externas sejam introduzidas, seus próprios termos e avisos deverão ser incluídos neste inventário.
 
-## Situação para publicação
+## Attribution in English
 
-- Licença MIT para os componentes próprios do MailToTask: escolhida pelo responsável do projeto, **texto preparado como minuta**.
-- Duplo licenciamento dos leitores de e-mail copiados: **autorização do titular pendente de formalização**.
-- Documento de autorização proposto: `docs/AUTHORIZATION-RELICENSING-DRAFT.md`.
-- Texto MIT proposto: `docs/LICENSE-MIT-DRAFT.md`.
-
-**Este arquivo documenta a origem; não substitui a autorização do titular nem concede licença adicional.**
+MailToTask is released under the MIT License (Copyright (c) 2026 OrkFlowTech). Copies of the email reader files `mail-core.js` and `mail-msg.js` included in MailToTask are MIT-licensed with the copyright owner's permission. This does **not** change the proprietary license of the original K-OrkFlowTech extension.
