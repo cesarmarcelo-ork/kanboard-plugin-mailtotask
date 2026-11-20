@@ -32,7 +32,7 @@ jobs:
           set -euo pipefail
           VERSION=$(grep 'function getPluginVersion' Plugin.php | cut -d "'" -f2)
           mkdir -p dist/MailToTask
-          cp -R Asset Controller Locale Service Template Test Plugin.php README.md .gitignore dist/MailToTask/
+          cp -R Asset Controller Locale Service Template Test Plugin.php README.md LICENSE THIRD-PARTY-NOTICES.md dist/MailToTask/
           cd dist
           zip -qr "../MailToTask-${VERSION}.zip" MailToTask
           unzip -t "../MailToTask-${VERSION}.zip" | tail -1
