@@ -25,7 +25,7 @@ class Plugin extends Base
     public function getPluginName() { return 'MailToTask'; }
     public function getPluginDescription() { return 'Importação manual de e-mails do Outlook/Exchange para cartões com Objetivo e StatusReport.'; }
     public function getPluginAuthor() { return 'OrkFlowTech'; }
-    public function getPluginVersion() { return '0.4.0-rc2'; }
+    public function getPluginVersion() { return '1.0.0'; }
     public function getPluginHomepage() { return 'https://github.com/cesarmarcelo-ork/kanboard-plugin-mailtotask'; }
     public function getCompatibleVersion() { return '>=1.2.50'; }
 }
