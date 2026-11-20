@@ -1,31 +1,5 @@
-# Minuta de licença MIT - MailToTask
+# Minuta substituída / Superseded draft
 
-**MINUTA NÃO VIGENTE.** Este documento prepara o licenciamento do MailToTask.
-Não concede, por si só, autorização de uso ou redistribuição dos componentes
-proprietários copiados da extensão K-OrkFlowTech. Quando a titularidade e a
-autorização para duplo licenciamento forem confirmadas, publicar o texto a seguir
-como `LICENSE` na raiz do repositório e revisar os avisos dos arquivos abrangidos.
+Este rascunho foi substituído pelo arquivo [LICENSE](../LICENSE), publicado sob MIT License (Copyright (c) 2026 OrkFlowTech).
 
----
-
-MIT License
-
-Copyright (c) 2026 OrkFlowTech
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+This draft is superseded by the repository root [LICENSE](../LICENSE). Do not use this draft for license interpretation.
