@@ -4,7 +4,7 @@ Kanboard plugin that turns **Microsoft Outlook/Exchange** messages (`.msg`, `.em
 
 Plugin do Kanboard para converter mensagens **Microsoft Outlook/Exchange** (`.msg`, `.eml`) em cartões, com Objetivo elaborado pelo usuário e anexos nativos.
 
-**Release candidate:** `0.4.0-rc2` • **Compatibility declared:** Kanboard `>=1.2.50` • **License:** MIT • **Status:** functional acceptance tests and release review pending.
+**Version:** `1.0.0` • **Compatibility declared:** Kanboard `>=1.2.50` • **License:** MIT • **Status:** tested and accepted on the project's Kanboard homelab.
 
 ## Português (pt_BR)
 
@@ -79,6 +79,6 @@ Create a distribution ZIP with `MailToTask/` as its root folder, then extract it
 - The owner of K-OrkFlowTech authorized licensing the copied email readers under MIT **in MailToTask**. The original browser extension **remains proprietary**. See [RELICENSING-RECORD](docs/RELICENSING-RECORD.md) and [THIRD-PARTY-NOTICES](THIRD-PARTY-NOTICES.md).
 - O titular da K-OrkFlowTech autorizou o uso dos leitores de e-mail sob MIT **nas cópias do MailToTask**. A extensão original **permanece proprietária**.
 - A distribuição pública requer release versionado com arquivo ZIP contendo a pasta `MailToTask/` na raiz, homologação funcional e solicitação de inclusão no `kanboard/website` (`plugins.json`).
-- Functional tests and CI still need verification before declaring v1.0.0 production-ready.
+- The maintainer reports successful functional acceptance tests on the homelab. Use appropriate validation before deploying to other environments.
 
 References: [Kanboard plugins](https://kanboard.org/plugins.html), [Kanboard website repository](https://github.com/kanboard/website), [StatusReport](https://github.com/cesarmarcelo-ork/kanboard-plugin-statusreport).
