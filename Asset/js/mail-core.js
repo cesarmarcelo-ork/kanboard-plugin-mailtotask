@@ -1,6 +1,9 @@
-/*! K-OrkFlowTech — Copyright (c) 2026 OrkFlowTech. Todos os direitos reservados.
- *  Software proprietário. Uso permitido; redistribuição, obra derivada e
- *  remoção deste aviso não são autorizadas. Ver LICENSE.
+/*! Copyright (c) 2026 OrkFlowTech
+ *  SPDX-License-Identifier: MIT
+ *  Included in MailToTask under the MIT License (see LICENSE).
+ *  Originally developed for the proprietary K-OrkFlowTech extension.
+ *  This MIT grant applies to the MailToTask copy; the original extension
+ *  retains its separate proprietary licensing terms.
  *  https://www.orkflowtech.com.br/
  */
 /* K-OrkFlowTech — K-Mail2Task: núcleo (core/mail-core.js)
