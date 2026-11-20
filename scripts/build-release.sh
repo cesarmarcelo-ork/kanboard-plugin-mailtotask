@@ -9,7 +9,7 @@ for command in zip unzip; do command -v "$command" >/dev/null || { echo "Missing
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 mkdir -p "$TMP/MailToTask" "$ROOT/dist"
-cp -R Asset Controller Locale Service Template Test Plugin.php README.md "$TMP/MailToTask/"
+cp -R Asset Controller Locale Service Template Test Plugin.php README.md LICENSE THIRD-PARTY-NOTICES.md "$TMP/MailToTask/"
 (cd "$TMP" && zip -qr "$ROOT/dist/MailToTask-${VERSION}.zip" MailToTask)
 unzip -tq "$ROOT/dist/MailToTask-${VERSION}.zip"
 echo "Ready: $ROOT/dist/MailToTask-${VERSION}.zip"
