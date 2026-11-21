@@ -22,6 +22,7 @@ jobs:
         run: php Test/parser-smoke.php
       - name: Portuguese and English translations
         run: php Test/locale-smoke.php
+          php Test/layout-compat-smoke.php
       - name: JavaScript syntax check
         run: |
           set -eu
