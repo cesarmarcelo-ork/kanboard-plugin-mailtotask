@@ -4,7 +4,7 @@ Kanboard plugin that turns **Microsoft Outlook/Exchange** messages (`.msg`, `.em
 
 Plugin do Kanboard para converter mensagens **Microsoft Outlook/Exchange** (`.msg`, `.eml`) em cartões, com Objetivo elaborado pelo usuário e anexos nativos.
 
-**Version:** `1.0.0` • **Compatibility declared:** Kanboard `>=1.2.50` • **License:** MIT • **Status:** tested and accepted on the project's Kanboard homelab.
+**Version:** `1.0.1` • **Compatibility declared:** Kanboard `>=1.2.50` • **License:** MIT • **Status:** tested and accepted on the project's Kanboard homelab.
 
 ## Português (pt_BR)
 
