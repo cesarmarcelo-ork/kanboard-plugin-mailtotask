@@ -8,6 +8,8 @@ Bug-fix release for Kanboard 1.2.50 and newer.
 - Keep the existing message parsing, attachments, StatusReport integration, access controls and other behavior unchanged.
 - Add a regression smoke test for both supported languages.
 
-**Compatibility:** Kanboard 1.2.50 and newer. Functional validation of the fix on Kanboard 1.2.50 is required before publishing this release.
+- Document optional integration with [StatusReport](https://github.com/cesarmarcelo-ork/kanboard-plugin-statusreport) and [VisibleDescription](https://github.com/MarcosBL/VisibleDescription) without adding plugin dependencies.
+
+**Compatibility:** Kanboard 1.2.50 and newer. The maintainer reports acceptance tests on Kanboard 1.2.50 (notebook) and previously on Kanboard 1.2.57 (homelab).
 
 The previous MailToTask 1.0.0 release remains available for historical reference.
