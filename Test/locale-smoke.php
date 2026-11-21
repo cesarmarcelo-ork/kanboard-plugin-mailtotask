@@ -22,7 +22,7 @@ foreach (array('Template/mail/import.php','Template/project/dropdown.php','Contr
 if (isset($pt['MailToTask title']) && $pt['MailToTask title'] !== 'e-mail para cartão') {
     $missing[] = 'Portuguese page title does not match requested case.';
 }
-if (isset($en['MailToTask title']) && $en['MailToTask title'] !== 'e-mail to task') {
+if (isset($en['MailToTask title']) && $en['MailToTask title'] !== 'Email to task') {
     $missing[] = 'English page title does not match expected translation.';
 }
 if (strpos(file_get_contents($root.'/Template/mail/import.php'), "t('MailToTask lab warning')") !== false) {
