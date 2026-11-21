@@ -24,8 +24,12 @@ class MailController extends BaseController
 
     private function render($projectId, $error = '')
     {
+        $project = $this->projectModel->getById($projectId);
         $this->response->html($this->helper->layout->app('MailToTask:mail/import', array(
-            'project'=>$this->projectModel->getById($projectId),
+            'project'=>$project,
+            // Kanboard 1.2.50+ requires the title layout variable.
+            'title'=>$project['name'],
+            'page_title'=>t('MailToTask title').' - '.$project['name'],
             'locale'=>$this->languageModel->getCurrentLanguage(),
             'error'=>$error,
             'statusreport'=>$this->supportsStatusReport(),

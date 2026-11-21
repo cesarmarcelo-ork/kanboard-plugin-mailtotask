@@ -4,7 +4,7 @@ Kanboard plugin that turns **Microsoft Outlook/Exchange** messages (`.msg`, `.em
 
 Plugin do Kanboard para converter mensagens **Microsoft Outlook/Exchange** (`.msg`, `.eml`) em cartões, com Objetivo elaborado pelo usuário e anexos nativos.
 
-**Version:** `1.0.0` • **Compatibility declared:** Kanboard `>=1.2.50` • **License:** MIT • **Status:** tested and accepted on the project's Kanboard homelab.
+**Version:** `1.0.1` • **Compatibility declared:** Kanboard `>=1.2.50` • **License:** MIT • **Status:** tested and accepted on the project's Kanboard homelab.
 
 ## Português (pt_BR)
 
@@ -17,6 +17,15 @@ Plugin do Kanboard para converter mensagens **Microsoft Outlook/Exchange** (`.ms
 - **Situação Atual** inicial editável, registrada como Informe de Situação quando o plugin StatusReport está disponível. O StatusReport mantém o controle do espelhamento na descrição.
 - Mensagem original preservada como arquivo do cartão; anexos extraídos enviados separadamente por meio de `TaskFileModel` do Kanboard.
 - Limite: até **20 MiB** para o e-mail original e até **20 MiB no conjunto dos anexos extraídos**, até 40 anexos. Por haver duplicação documental, o armazenamento poderá chegar a aproximadamente 40 MiB por mensagem.
+
+### Integração opcional com StatusReport e VisibleDescription
+
+O MailToTask funciona **independentemente** dos dois plugins abaixo. Quando utilizados em conjunto:
+
+- [StatusReport](https://github.com/cesarmarcelo-ork/kanboard-plugin-statusreport) permite registrar o Informe de Situação inicial como **Situação Atual** e, quando configurado, espelhá-la na descrição do cartão.
+- [VisibleDescription](https://github.com/MarcosBL/VisibleDescription) exibe a descrição diretamente no cartão do quadro Kanban. Com o espelhamento do StatusReport habilitado, a Situação Atual também fica visível no quadro sem abrir o cartão.
+
+O VisibleDescription não é exigido pelo MailToTask e não é uma integração automática para cadastro de informes: é um complemento visual opcional.
 
 ### Limites conhecidos
 
@@ -62,6 +71,15 @@ Executar testes com mensagens fictícias .msg/.eml, com e sem anexos, limites de
 - Upload the **unchanged original message** and non-inline extracted attachments via Kanboard's native file storage model.
 - Limits: **20 MiB** for the original message, **20 MiB combined** for extracted files and at most 40 attachments; total disk usage may approach 40 MiB per import.
 
+### Optional integration with StatusReport and VisibleDescription
+
+MailToTask works **independently** of both complementary plugins:
+
+- [StatusReport](https://github.com/cesarmarcelo-ork/kanboard-plugin-statusreport) can register the initial **Current Status** as a Status Report and, when enabled, mirror it into the task description.
+- [VisibleDescription](https://github.com/MarcosBL/VisibleDescription) shows the task description on its Kanban board card. With StatusReport mirroring enabled, the Current Status is visible on the board without opening the task.
+
+VisibleDescription is optional; it only changes what is displayed on the board and is not required to import email messages.
+
 ### Known limitations
 
 - Directly dragging an Outlook application item into a browser may not provide a real file; export the message first.
@@ -81,4 +99,4 @@ Create a distribution ZIP with `MailToTask/` as its root folder, then extract it
 - A distribuição pública requer release versionado com arquivo ZIP contendo a pasta `MailToTask/` na raiz, homologação funcional e solicitação de inclusão no `kanboard/website` (`plugins.json`).
 - The maintainer reports successful functional acceptance tests on the homelab. Use appropriate validation before deploying to other environments.
 
-References: [Kanboard plugins](https://kanboard.org/plugins.html), [Kanboard website repository](https://github.com/kanboard/website), [StatusReport](https://github.com/cesarmarcelo-ork/kanboard-plugin-statusreport).
+References: [Kanboard plugins](https://kanboard.org/plugins.html), [Kanboard website repository](https://github.com/kanboard/website), [StatusReport](https://github.com/cesarmarcelo-ork/kanboard-plugin-statusreport), [VisibleDescription](https://github.com/MarcosBL/VisibleDescription).
