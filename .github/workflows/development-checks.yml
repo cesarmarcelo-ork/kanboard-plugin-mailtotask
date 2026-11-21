@@ -20,8 +20,9 @@ jobs:
           find . -type f -name '*.php' -print0 | xargs -0 -n1 php -l
       - name: Parser smoke test
         run: php Test/parser-smoke.php
-      - name: Portuguese and English translations
-        run: php Test/locale-smoke.php
+      - name: Portuguese and English translations + layout compatibility
+        run: |
+          php Test/locale-smoke.php
           php Test/layout-compat-smoke.php
       - name: JavaScript syntax check
         run: |
