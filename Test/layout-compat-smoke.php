@@ -42,7 +42,7 @@ namespace {
     $ctrl->projectModel = new TestProjectModel();
     $ctrl->languageModel = new TestLanguageModel();
     $method = new \ReflectionMethod($ctrl, 'render');
-    foreach (array('en_US' => 'Email to task', 'pt_BR' => 'e-mail para cartão') as $locale => $heading) {
+    foreach (array('en_US' => 'e-mail to task', 'pt_BR' => 'e-mail para cartão') as $locale => $heading) {
         $GLOBALS['mailtotask_test_locale'] = $locale;
         $method->invoke($ctrl, 1);
         $params = $layout->params;
