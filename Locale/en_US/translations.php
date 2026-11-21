@@ -1,7 +1,7 @@
 <?php
 return array(
     'MailToTask menu'=>'e-mail',
-    'MailToTask title'=>'Email to task',
+    'MailToTask title'=>'e-mail to task',
     'MailToTask back'=>'Back to board',
     'MailToTask step import'=>'1. Import an Outlook message',
     'MailToTask import hint'=>'Drop a .msg or .eml file saved on your computer. The original message and extracted attachments will be saved to the task.',
