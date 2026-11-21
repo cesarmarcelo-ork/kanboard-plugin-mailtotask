@@ -54,7 +54,7 @@ Executar testes com mensagens fictícias .msg/.eml, com e sem anexos, limites de
 
 ### Features
 
-- Native project menu **✉ e-mail**; page title **e-mail to task**.
+- Native project menu **✉ e-mail**; page title **Email to task**.
 - Drag and drop saved Outlook `.msg` and `.eml` files for local parsing and preview.
 - Review sender, subject, date, body and extracted attachments.
 - **Objective is required and entered manually**, never auto-generated.
